@@ -13,8 +13,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes are now relative to the function root
-// Redirects will convert /api/admin/* -> /.netlify/functions/api/admin/*
+// Routes must include the /api prefix because that's what's passed by the redirect
+app.use("/api/admin", adminRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+
+// Fallback for paths without /api just in case
 app.use("/admin", adminRoutes);
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
