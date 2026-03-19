@@ -13,9 +13,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Handle /api prefix
-app.use("/api/admin", adminRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/orders", orderRoutes);
+// Routes are now relative to the function root
+// Redirects will convert /api/admin/* -> /.netlify/functions/api/admin/*
+app.use("/admin", adminRoutes);
+app.use("/products", productRoutes);
+app.use("/orders", orderRoutes);
 
 module.exports.handler = serverless(app);
