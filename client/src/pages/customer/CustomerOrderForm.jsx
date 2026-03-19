@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import { getBusinessInfo } from '../../api/auth';
 import { getPublicProducts } from '../../api/products';
 import { placeOrder } from '../../api/orders';
+import AdComponent from '../../components/AdComponent';
 
 // Step progress indicator
 function StepProgress({ current, total }) {
@@ -42,6 +43,11 @@ function SuccessScreen({ customerName, businessName }) {
                 <div style={{ padding: '12px 20px', borderRadius: '10px', background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', fontSize: '0.85rem', color: '#c4b5fd' }}>
                     📞 You'll be contacted on your phone
                 </div>
+            </div>
+
+            {/* Success Page Ad */}
+            <div style={{ marginTop: '32px' }}>
+                <AdComponent adSlot="order-success-ad" />
             </div>
         </div>
     );
@@ -389,6 +395,11 @@ export default function CustomerOrderForm() {
             <p style={{ marginTop: '24px', fontSize: '0.75rem', color: 'rgba(240,232,255,0.2)' }}>
                 Powered by HairBiz Pro ✂️
             </p>
+
+            {/* Sticky Footer Ad for Mobile */}
+            <div style={{ position: 'sticky', bottom: 0, width: '100%', maxWidth: '480px', marginTop: 'auto', paddingTop: '20px' }}>
+                <AdComponent adSlot="customer-footer-ad" adFormat="horizontal" />
+            </div>
         </div>
     );
 }

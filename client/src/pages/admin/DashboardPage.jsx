@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ShoppingBag, DollarSign, Clock, TrendingUp, Package } from 'lucide-react';
 import { getMyOrders, getRevenueSummary } from '../../api/orders';
 import { getLowStockProducts } from '../../api/products';
+import AdComponent from '../../components/AdComponent';
 
 function StatCard({ icon: Icon, label, value, color, sub }) {
     return (
@@ -79,6 +80,9 @@ export default function DashboardPage() {
                     {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 </p>
             </div>
+
+            {/* Dashboard Banner Ad */}
+            <AdComponent adSlot="dashboard-top-banner" />
 
             {/* Stat cards */}
             <div style={{ display: 'flex', gap: '16px', marginBottom: '32px', flexWrap: 'wrap' }}>
